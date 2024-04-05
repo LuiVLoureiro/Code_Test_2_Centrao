@@ -2,12 +2,15 @@ import pandas as pd
 import numpy as np
 import requests
 import json
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 class API_SPORTS:
     def __init__(self) -> None:
         pass
 
     def brasileirao_serie_a(chave):
+        global Database
         # Url do Site que vai ser consumida a api
         url_brasileirao_A = "https://v3.football.api-sports.io/fixtures/?season=2024&league=71"
         payload={}
@@ -45,3 +48,34 @@ class API_SPORTS:
             'Estadio': estadios,
             'Cidade': cidades
         })
+    
+    def dashboard():
+        fig = make_subplots(
+            rows=1, cols=1,
+            shared_xaxes=True,
+            specs=[[{"type": "table"}]]
+        )
+
+        fig.add_trace(
+            go.Table(
+                header=dict(
+                    values=["Time-Casa", "Time-Fora", "Data", "Estadio", "Cidade"],
+                    font=dict(size=10),
+                    align="left"
+                ),
+                cells=dict(
+                    values=[Database[k].tolist() for k in Database.columns],
+                    align = "left")
+            ),
+            row=1, col=1
+        )
+        fig.update_layout(
+            height=800,
+            showlegend=False,
+            title_text="Dashboard Para API de Campeonatos de Futebol",
+        )
+
+        fig.show() 
+
+API_SPORTS.brasileirao_serie_a('9c1beec7649cd19e43589903cb082bc0')
+API_SPORTS.dashboard()      
