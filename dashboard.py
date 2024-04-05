@@ -6,8 +6,8 @@ chave = 'SUA_CHAVE_AQUI'
 
 series = ['A', 'B', 'C', 'D']
 
-'''for serie in series:
-    API_SPORTS.brasileirao(chave, serie)'''
+for serie in series:
+    API_SPORTS.brasileirao(chave, serie)
     
 # Carrega os DataFrames
 SerieA = pd.read_csv('brasileirao_serie_71.csv')
