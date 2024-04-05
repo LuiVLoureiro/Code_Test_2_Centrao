@@ -71,5 +71,7 @@ class API_SPORTS:
         # Exportando para CSV
         Database.to_csv('brasileirao_serie_{}.csv'.format(serie), index=False)
 
-        
+API_SPORTS.brasileirao('9c1beec7649cd19e43589903cb082bc0', 'A')
+API_SPORTS.brasileirao('9c1beec7649cd19e43589903cb082bc0', 'B')
+API_SPORTS.brasileirao('9c1beec7649cd19e43589903cb082bc0', 'C')
 API_SPORTS.brasileirao('9c1beec7649cd19e43589903cb082bc0', 'D')
