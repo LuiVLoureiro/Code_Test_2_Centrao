@@ -6,8 +6,8 @@ chave = 'SUA_CHAVE_AQUI'
 
 series = ['A', 'B', 'C', 'D']
 
-for serie in series:
-    API_SPORTS.brasileirao(chave, serie)
+'''for serie in series:
+    API_SPORTS.brasileirao(chave, serie)'''
     
 # Carrega os DataFrames
 SerieA = pd.read_csv('brasileirao_serie_71.csv')
@@ -28,7 +28,8 @@ app = Dash(__name__)
 
 # Layout do app
 app.layout = html.Div([
-    html.Div(children='Dashboard Para API de Campeonatos de Futebol'),
+    html.Div(children='Dashboard Para API de Campeonatos de Futebol',
+            style={'textAlign': 'center', 'padding': '20px','fontSize': '22px', 'fontFamily': 'Arial, sans-serif', 'margin': '20px','color': '#000000'}),
     dcc.Dropdown(
         id='dropdown-series',
         options=[
