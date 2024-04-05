@@ -68,37 +68,8 @@ class API_SPORTS:
             'Cidade': cidades
         })
 
-        API_SPORTS.dashboard()
+        # Exportando para CSV
+        Database.to_csv('brasileirao_serie_{}.csv'.format(serie), index=False)
 
-    
-    def dashboard():
-        fig = make_subplots(
-            rows=1, cols=1,
-            shared_xaxes=True,
-            specs=[[{"type": "table"}]]
-        )
-
-        fig.add_trace(
-            go.Table(
-                header=dict(
-                    values=["Time-Casa", "Time-Fora", "Data", "Estádio", "Cidade"],
-                    font=dict(size=10),
-                    align="left"
-                ),
-                cells=dict(
-                    values=[Database[k].tolist() for k in Database.columns],
-                    align = "left")
-            ),
-            row=1, col=1
-        )
-        fig.update_layout(
-            height=800,
-            showlegend=False,
-            title_text="Dashboard Para API de Campeonatos de Futebol",
-        )
-        fig.show() 
-
-
-serie = input('Olá, bem vindo à tabela de jogos do Brasileirão... \nDigite qual é a série que você quer consultar: [A], [B], [C], [D]\n-> ')
-API_SPORTS.brasileirao('DEIXE_SUA_CHAVE_DE_ACESSO_AQUI', serie.upper())
-API_SPORTS.dashboard()      
+        
+API_SPORTS.brasileirao('9c1beec7649cd19e43589903cb082bc0', 'D')
