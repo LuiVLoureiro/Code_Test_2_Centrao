@@ -8,7 +8,6 @@ class API_SPORTS:
         pass
 
     def brasileirao_serie_a(chave):
-
         # Url do Site que vai ser consumida a api
         url_brasileirao_A = "https://v3.football.api-sports.io/fixtures/?season=2024&league=71"
         payload={}
@@ -25,3 +24,12 @@ class API_SPORTS:
         #Transformar resposta em JSON para manipulação dos arquivos
         data = response.json()
         data = data['response']
+
+        # Separando informações no JSON para cada estrutura
+        partidas = np.array([partida['fixture'] for partida in data])
+        data_partidas = np.array([data['date'] for data in partidas])
+        estadios = np.array([estadio['venue']['name'] for estadio in partidas])
+        cidades = np.array([cidade['venue']['city'] for cidade in partidas])
+        times_casa = np.array([time['teams']['home']['name'] for time in data])
+        times_fora = np.array([time['teams']['away']['name'] for time in data])
+        
