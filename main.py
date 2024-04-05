@@ -21,7 +21,7 @@ class API_SPORTS:
         # Utilizar método request, passando como protocolo o GET para o url especifico, com os headers necessários
         response = requests.request("GET", url_brasileirao_A, headers=headers, data=payload)
 
-        #Transformar resposta em JSON para manipulação dos arquivos
+        # Transformar resposta em JSON para manipulação dos arquivos
         data = response.json()
         data = data['response']
 
@@ -32,4 +32,13 @@ class API_SPORTS:
         cidades = np.array([cidade['venue']['city'] for cidade in partidas])
         times_casa = np.array([time['teams']['home']['name'] for time in data])
         times_fora = np.array([time['teams']['away']['name'] for time in data])
+
+        # Organizando informações no Pandas, para a criação de uma Database
+        Database = pd.DataFrame({
+            'Time Casa': times_casa,
+            'Time Fora': times_fora,
+            'Data': data_partidas,
+            'Estadio': estadios,
+            'Cidade': cidades
+        })
         
