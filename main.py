@@ -14,23 +14,21 @@ class API_SPORTS:
         series = ['A', 'B', 'C', 'D']
 
         for i in series:
-            if serie != i:
+            if serie == series[0]:
+                serie = 71
+                break
+            elif serie == series[1]:
+                serie = 72
+                break
+            elif serie == series[2]:
+                serie = 75
+                break
+            elif serie == series[3]:
+                serie = 76
+                break
+            elif serie != i:
                 print('Essa serie não existe no Brasileirão, tente novamente...')
                 exit()
-            else:
-                pass
-                if serie == series[0]:
-                    serie = 71
-                    break
-                elif serie == series[1]:
-                    serie = 72
-                    break
-                elif serie == series[2]:
-                    serie = 75
-                    break
-                elif serie == series[3]:
-                    serie = 76
-                    break
         
         # Url do Site que vai ser consumida a api
         url_brasileirao_A = f"https://v3.football.api-sports.io/fixtures/?season=2024&league={serie}"
@@ -98,4 +96,9 @@ class API_SPORTS:
             showlegend=False,
             title_text="Dashboard Para API de Campeonatos de Futebol",
         )
-        fig.show()    
+        fig.show() 
+
+
+serie = input('Olá, bem vindo à tabela de jogos do Brasileirão... \nDigite qual é a série que você quer consultar: [A], [B], [C], [D]\n-> ')
+API_SPORTS.brasileirao('DEIXE_SUA_CHAVE_DE_ACESSO_AQUI', serie.upper())
+API_SPORTS.dashboard()      
