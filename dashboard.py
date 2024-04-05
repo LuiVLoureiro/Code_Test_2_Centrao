@@ -2,12 +2,12 @@ from dash import Dash, dcc, html, Input, Output, dash_table
 import pandas as pd
 from main import API_SPORTS
 
-chave = '5fd35bd58b97229b27118bd641213ece'
+chave = 'SUA_CHAVE_AQUI'
 
 series = ['A', 'B', 'C', 'D']
 
-for serie in series:
-    API_SPORTS.brasileirao(chave, serie)
+'''for serie in series:
+    API_SPORTS.brasileirao(chave, serie)'''
     
 # Carrega os DataFrames
 SerieA = pd.read_csv('brasileirao_serie_71.csv')
@@ -39,7 +39,28 @@ app.layout = html.Div([
         ],
         value='SerieA'  # Valor padrão
     ),
-    dash_table.DataTable(id='table', page_size=10)
+    dash_table.DataTable(
+        id='table',
+        page_size=10,
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold',
+            'color': 'black',
+            'textAlign': 'center',
+        },
+        style_cell={
+            'textAlign': 'left',
+            'padding': '10px',
+            'fontSize': 16,
+        },
+        style_data_conditional=[
+            {
+                'if': {'row_index': 'odd'},
+                'backgroundColor': 'rgb(248, 248, 248)'
+            }
+        ],
+        style_as_list_view=True,  # Estilo mais limpo, sem bordas externas
+    )
 ])
 
 # Callback para atualizar a tabela com base na seleção do dropdown
