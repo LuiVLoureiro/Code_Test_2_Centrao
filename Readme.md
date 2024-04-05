@@ -1,6 +1,6 @@
 ## Dashboard Interativo para Visualização de Partidas de Futebol em Python
 
-## Exemplo do Dashboard Criado
+### Exemplo do Dashboard Criado
 <img  align='center' src='https://github.com/LuiVLoureiro/Code_Test_2_Centrao/blob/main/fotos/dashboard.png'>
 
 ## Como Testar:
