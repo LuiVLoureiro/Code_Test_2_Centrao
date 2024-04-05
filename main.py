@@ -9,10 +9,31 @@ class API_SPORTS:
     def __init__(self) -> None:
         pass
 
-    def brasileirao_serie_a(chave):
+    def brasileirao(chave, serie):
         global Database
+        series = ['A', 'B', 'C', 'D']
+
+        for i in series:
+            if serie != i:
+                print('Essa serie não existe no Brasileirão, tente novamente...')
+                exit()
+            else:
+                pass
+                if serie == series[0]:
+                    serie = 71
+                    break
+                elif serie == series[1]:
+                    serie = 72
+                    break
+                elif serie == series[2]:
+                    serie = 75
+                    break
+                elif serie == series[3]:
+                    serie = 76
+                    break
+        
         # Url do Site que vai ser consumida a api
-        url_brasileirao_A = "https://v3.football.api-sports.io/fixtures/?season=2024&league=71"
+        url_brasileirao_A = f"https://v3.football.api-sports.io/fixtures/?season=2024&league={serie}"
         payload={}
 
         # Adicionar Headers para suprir os parâmetros estabelecidos pelo site
@@ -48,6 +69,9 @@ class API_SPORTS:
             'Estadio': estadios,
             'Cidade': cidades
         })
+
+        API_SPORTS.dashboard()
+
     
     def dashboard():
         fig = make_subplots(
@@ -59,7 +83,7 @@ class API_SPORTS:
         fig.add_trace(
             go.Table(
                 header=dict(
-                    values=["Time-Casa", "Time-Fora", "Data", "Estadio", "Cidade"],
+                    values=["Time-Casa", "Time-Fora", "Data", "Estádio", "Cidade"],
                     font=dict(size=10),
                     align="left"
                 ),
@@ -74,8 +98,4 @@ class API_SPORTS:
             showlegend=False,
             title_text="Dashboard Para API de Campeonatos de Futebol",
         )
-
-        fig.show() 
-
-API_SPORTS.brasileirao_serie_a('9c1beec7649cd19e43589903cb082bc0')
-API_SPORTS.dashboard()      
+        fig.show()    
