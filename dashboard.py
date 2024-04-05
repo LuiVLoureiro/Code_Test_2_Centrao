@@ -33,10 +33,10 @@ app.layout = html.Div([
     dcc.Dropdown(
         id='dropdown-series',
         options=[
-            {'label': 'Serie A', 'value': 'SerieA'},
-            {'label': 'Serie B', 'value': 'SerieB'},
-            {'label': 'Serie C', 'value': 'SerieC'},
-            {'label': 'Serie D', 'value': 'SerieD'}
+            {'label': 'Brasileirão Serie A', 'value': 'SerieA'},
+            {'label': 'Brasileirão Serie B', 'value': 'SerieB'},
+            {'label': 'Brasileirão Serie C', 'value': 'SerieC'},
+            {'label': 'Brasileirão Serie D', 'value': 'SerieD'}
         ],
         value='SerieA'  # Valor padrão
     ),
