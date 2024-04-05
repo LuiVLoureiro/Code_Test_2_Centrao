@@ -1,7 +1,14 @@
 from dash import Dash, dcc, html, Input, Output, dash_table
 import pandas as pd
-import main
+from main import API_SPORTS
 
+chave = '5fd35bd58b97229b27118bd641213ece'
+
+series = ['A', 'B', 'C', 'D']
+
+for serie in series:
+    API_SPORTS.brasileirao(chave, serie)
+    
 # Carrega os DataFrames
 SerieA = pd.read_csv('brasileirao_serie_71.csv')
 SerieB = pd.read_csv('brasileirao_serie_72.csv')
