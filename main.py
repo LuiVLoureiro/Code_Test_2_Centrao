@@ -33,6 +33,10 @@ class API_SPORTS:
         times_casa = np.array([time['teams']['home']['name'] for time in data])
         times_fora = np.array([time['teams']['away']['name'] for time in data])
 
+        # Manipular Datas para formato visualmente agradável
+        data_partidas = pd.to_datetime(data_partidas)
+        data_partidas = data_partidas.strftime('%d/%m/%Y')
+
         # Organizando informações no Pandas, para a criação de uma Database
         Database = pd.DataFrame({
             'Time Casa': times_casa,
@@ -41,4 +45,3 @@ class API_SPORTS:
             'Estadio': estadios,
             'Cidade': cidades
         })
-        
